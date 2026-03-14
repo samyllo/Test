@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppHub — Portale</title>
+  <link rel="stylesheet" href="portal.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <span class="navbar__logo"><span class="logo-icon">&#9638;</span> AppHub</span>
+      <div class="navbar__right">
+        <span class="navbar__user" id="navbar-user"></span>
+        <button class="btn-logout" onclick="logout()">Esci</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="portal-main">
+    <div class="portal-header">
+      <h1>Funzioni aziendali</h1>
+      <p class="portal-subtitle">Seleziona una funzione per accedervi.</p>
+    </div>
+
+    <!-- SEZIONI (aggiungi o rimuovi card liberamente) -->
+    <div class="functions-grid" id="functions-grid">
+
+      <!-- ===== CARD TEMPLATE =====
+      <div class="fn-card" onclick="openFunction('URL_QUI')">
+        <div class="fn-card__icon">EMOJI</div>
+        <div class="fn-card__body">
+          <div class="fn-card__name">Nome funzione</div>
+          <div class="fn-card__desc">Descrizione breve.</div>
+        </div>
+        <span class="fn-card__arrow">&#8594;</span>
+      </div>
+      ============================= -->
+
+      <div class="fn-card placeholder">
+        <div class="fn-card__icon">&#128188;</div>
+        <div class="fn-card__body">
+          <div class="fn-card__name">Funzione 1</div>
+          <div class="fn-card__desc">Clicca per configurare questa funzione aziendale.</div>
+        </div>
+        <span class="fn-card__arrow">&#8594;</span>
+      </div>
+
+      <div class="fn-card placeholder">
+        <div class="fn-card__icon">&#128202;</div>
+        <div class="fn-card__body">
+          <div class="fn-card__name">Funzione 2</div>
+          <div class="fn-card__desc">Clicca per configurare questa funzione aziendale.</div>
+        </div>
+        <span class="fn-card__arrow">&#8594;</span>
+      </div>
+
+      <div class="fn-card placeholder">
+        <div class="fn-card__icon">&#128101;</div>
+        <div class="fn-card__body">
+          <div class="fn-card__name">Funzione 3</div>
+          <div class="fn-card__desc">Clicca per configurare questa funzione aziendale.</div>
+        </div>
+        <span class="fn-card__arrow">&#8594;</span>
+      </div>
+
+      <div class="fn-card placeholder">
+        <div class="fn-card__icon">&#128295;</div>
+        <div class="fn-card__body">
+          <div class="fn-card__name">Funzione 4</div>
+          <div class="fn-card__desc">Clicca per configurare questa funzione aziendale.</div>
+        </div>
+        <span class="fn-card__arrow">&#8594;</span>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="portal.js"></script>
+</body>
+</html>

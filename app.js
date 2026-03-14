@@ -1,6 +1,7 @@
 // Credenziali di esempio — sostituisci con autenticazione reale
 const USERS = [
   { username: 'admin', password: 'admin123' },
+  { username: 'test',  password: 'test' },
 ];
 
 function handleLogin(e) {
@@ -14,8 +15,8 @@ function handleLogin(e) {
   if (match) {
     errorMsg.textContent = '';
     // Reindirizza al portale (pagina da creare)
-    alert('Accesso effettuato! Reindirizzamento al portale...');
-    // window.location.href = 'portal.html';
+    sessionStorage.setItem('apphub_user', username);
+    window.location.href = 'portal.html';
   } else {
     errorMsg.textContent = 'Utente o password non corretti.';
   }
