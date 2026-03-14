@@ -1,4 +1,4 @@
-// Credenziali di esempio — sostituisci con autenticazione reale
+// Credenziali — sostituisci con autenticazione reale su backend
 const USERS = [
   { username: 'admin', password: 'admin123' },
   { username: 'test',  password: 'test' },
@@ -14,8 +14,7 @@ function handleLogin(e) {
 
   if (match) {
     errorMsg.textContent = '';
-    // Reindirizza al portale (pagina da creare)
-    sessionStorage.setItem('apphub_user', username);
+    localStorage.setItem('apphub_user', username);
     window.location.href = 'portal.html';
   } else {
     errorMsg.textContent = 'Utente o password non corretti.';

@@ -1,5 +1,5 @@
 // Protezione pagina: se non loggato, torna al login
-const user = sessionStorage.getItem('apphub_user');
+const user = localStorage.getItem('apphub_user');
 if (!user) {
   window.location.href = 'index.html';
 }
@@ -8,7 +8,7 @@ if (!user) {
 document.getElementById('navbar-user').textContent = user;
 
 function logout() {
-  sessionStorage.removeItem('apphub_user');
+  localStorage.removeItem('apphub_user');
   window.location.href = 'index.html';
 }
 
