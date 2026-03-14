@@ -3,170 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AppHub — Il tuo portale applicativi</title>
+  <title>AppHub — Accedi</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="container navbar__inner">
-      <a href="#" class="navbar__logo">
+  <div class="login-wrapper">
+    <div class="login-card">
+      <div class="login-logo">
         <span class="logo-icon">&#9638;</span> AppHub
-      </a>
-      <nav class="navbar__links">
-        <a href="#apps">Applicativi</a>
-        <a href="#features">Funzionalità</a>
-        <a href="#contact">Contatti</a>
-      </nav>
-      <button class="btn btn--outline" onclick="document.getElementById('modal-add').style.display='flex'">
-        + Aggiungi App
-      </button>
-    </div>
-  </header>
+      </div>
+      <h1>Accedi al portale</h1>
+      <p class="login-subtitle">Inserisci le tue credenziali per continuare.</p>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero__content">
-      <h1 class="hero__title">Tutti i tuoi applicativi<br /><span class="highlight">in un unico posto</span></h1>
-      <p class="hero__subtitle">
-        AppHub è il portale centralizzato che ti permette di accedere, gestire e
-        lanciare tutti i tuoi applicativi interni ed esterni con un click.
-      </p>
-      <div class="hero__actions">
-        <a href="#apps" class="btn btn--primary">Esplora le App</a>
-        <a href="#contact" class="btn btn--ghost">Richiedi accesso</a>
-      </div>
-    </div>
-    <div class="hero__bg-shapes">
-      <div class="shape shape--1"></div>
-      <div class="shape shape--2"></div>
-      <div class="shape shape--3"></div>
-    </div>
-  </section>
-
-  <!-- STATS BANNER -->
-  <div class="stats-banner">
-    <div class="container stats-banner__grid">
-      <div class="stat">
-        <span class="stat__value" id="stat-apps">0</span>
-        <span class="stat__label">Applicativi connessi</span>
-      </div>
-      <div class="stat">
-        <span class="stat__value">24/7</span>
-        <span class="stat__label">Disponibilità</span>
-      </div>
-      <div class="stat">
-        <span class="stat__value">SSO</span>
-        <span class="stat__label">Accesso unificato</span>
-      </div>
-      <div class="stat">
-        <span class="stat__value">&#128274;</span>
-        <span class="stat__label">Sicurezza garantita</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- APP GRID -->
-  <section id="apps" class="apps-section">
-    <div class="container">
-      <h2 class="section-title">Applicativi disponibili</h2>
-      <p class="section-subtitle">Clicca su un applicativo per aprirlo. Usa il filtro per cercare rapidamente.</p>
-
-      <div class="search-bar">
-        <input type="text" id="search-input" placeholder="&#128269; Cerca un applicativo..." oninput="filterApps()" />
-        <select id="category-filter" onchange="filterApps()">
-          <option value="">Tutte le categorie</option>
-          <option value="gestionale">Gestionale</option>
-          <option value="comunicazione">Comunicazione</option>
-          <option value="analytics">Analytics</option>
-          <option value="utility">Utility</option>
-        </select>
-      </div>
-
-      <div class="apps-grid" id="apps-grid">
-        <!-- Cards rendered by JS -->
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section id="features" class="features-section">
-    <div class="container">
-      <h2 class="section-title">Perché usare AppHub?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">&#9889;</div>
-          <h3>Accesso rapido</h3>
-          <p>Lancia qualsiasi applicativo in un click, senza ricordare URL o credenziali separate.</p>
+      <form class="login-form" onsubmit="handleLogin(event)">
+        <div class="field">
+          <label for="username">Utente</label>
+          <input type="text" id="username" placeholder="nome.utente" autocomplete="username" required />
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#128272;</div>
-          <h3>Single Sign-On</h3>
-          <p>Un'unica autenticazione per tutti gli applicativi integrati nel portale.</p>
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" required />
+            <button type="button" class="toggle-pw" onclick="togglePassword()">&#128065;</button>
+          </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#128202;</div>
-          <h3>Dashboard unificata</h3>
-          <p>Monitora lo stato e le notifiche di tutte le applicazioni da un'unica schermata.</p>
+        <div class="login-options">
+          <label class="remember">
+            <input type="checkbox" id="remember" /> Ricordami
+          </label>
+          <a href="#" class="forgot">Password dimenticata?</a>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#128295;</div>
-          <h3>Facile integrazione</h3>
-          <p>Aggiungi nuovi applicativi in pochi secondi tramite URL o API.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact-section">
-    <div class="container contact-inner">
-      <h2 class="section-title">Richiedi accesso o integrazione</h2>
-      <form class="contact-form" onsubmit="handleContactSubmit(event)">
-        <div class="form-row">
-          <input type="text" placeholder="Nome e cognome" required />
-          <input type="email" placeholder="Email aziendale" required />
-        </div>
-        <input type="text" placeholder="Nome dell'applicativo da integrare" />
-        <textarea placeholder="Descrivi la tua richiesta..." rows="4" required></textarea>
-        <button type="submit" class="btn btn--primary">Invia richiesta</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer__inner">
-      <span class="navbar__logo"><span class="logo-icon">&#9638;</span> AppHub</span>
-      <p>&copy; 2026 AppHub — Portale applicativi aziendali</p>
-    </div>
-  </footer>
-
-  <!-- MODAL: Aggiungi App -->
-  <div class="modal-overlay" id="modal-add" onclick="closeModalOnOverlay(event)">
-    <div class="modal">
-      <button class="modal__close" onclick="document.getElementById('modal-add').style.display='none'">&times;</button>
-      <h2>Aggiungi un applicativo</h2>
-      <form onsubmit="addApp(event)">
-        <input type="text" id="new-app-name" placeholder="Nome applicativo" required />
-        <input type="url" id="new-app-url" placeholder="URL (es. https://mia-app.com)" required />
-        <input type="text" id="new-app-desc" placeholder="Descrizione breve" />
-        <select id="new-app-category">
-          <option value="gestionale">Gestionale</option>
-          <option value="comunicazione">Comunicazione</option>
-          <option value="analytics">Analytics</option>
-          <option value="utility">Utility</option>
-        </select>
-        <input type="text" id="new-app-icon" placeholder="Emoji icona (es. 📊)" />
-        <button type="submit" class="btn btn--primary" style="width:100%;margin-top:8px">Aggiungi</button>
+        <button type="submit" class="btn-login">Accedi</button>
+        <p class="error-msg" id="error-msg"></p>
       </form>
     </div>
   </div>
-
-  <!-- TOAST -->
-  <div class="toast" id="toast"></div>
-
   <script src="app.js"></script>
 </body>
 </html>
