@@ -1,7 +1,8 @@
 // Protezione pagina: se non loggato, torna al login
 const user = localStorage.getItem('apphub_user');
 if (!user) {
-  window.location.href = 'index.html';
+  window.location.replace('index.html');
+  throw new Error('not authenticated');
 }
 
 // Mostra nome utente in navbar
